@@ -1,3 +1,4 @@
+
 def switch_on_relay():
     print("Turn on the relay!")
 
@@ -14,3 +15,7 @@ def run():
         if b:
             switch_on_relay()
         count = count + 1
+
+
+if __name__ == '__main__':
+    exit(run())
