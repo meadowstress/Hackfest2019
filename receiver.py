@@ -3,6 +3,9 @@ def check_input_dummy():
     return True
 
 def check_input_from_keyboard():
+    activation_keys = ["yes", "y", "alarm", "911"]
     print("Check input from keyboard")
-    activation_request_string = input("Do you want to activate?")
-    return activation_request_string.lower() == "yes"
+    activation_request_string = input("Do you want to activate? ")
+    print(activation_request_string)
+    activation_request = activation_request_string in activation_keys
+    return activation_request

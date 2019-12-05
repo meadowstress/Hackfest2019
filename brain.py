@@ -12,6 +12,7 @@ def run():
     while count < max_count:
         activation_request = receiver.check_input_from_keyboard()
         print("Activation request = ", activation_request)
+        #activation_request = arbitrate(activation_requests)
         relay.activate(activation_request)
         count = count + 1
         print("sleep")
