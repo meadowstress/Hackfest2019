@@ -10,7 +10,7 @@ def run():
     max_count = 10
     relay = relay_communicator.RelayCommunicator()
     while count < max_count:
-        activation_request = receiver.check_input_dummy()
+        activation_request = receiver.check_input_from_keyboard()
         print("Activation request = ", activation_request)
         relay.activate(activation_request)
         count = count + 1
