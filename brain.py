@@ -3,6 +3,7 @@ import relay_communicator
 import atexit
 import time
 
+
 def run():
     print("Hi, I am the brain")
     count = 0
@@ -13,7 +14,8 @@ def run():
         print("Activation request = ", activation_request)
         relay.activate(activation_request)
         count = count + 1
-        time.sleep(1.0)
+#        time.sleep(1.0)
+
 
 if __name__ == '__main__':
     exit(run())
