@@ -1,9 +1,5 @@
 from slack_alarm_bot import SlackAlarmBot
 import relay_communicator
-<<<<<<< HEAD
-import receiver
-=======
->>>>>>> Refactor receiver to class and add hardware engage functionality
 import time
 import receiver
 
