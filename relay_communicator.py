@@ -21,6 +21,7 @@ class RelayCommunicator:
             GPIO.output(self.OUTPUT_PIN, GPIO.HIGH)
 
     def __del__(self):
+        print("Delete Relay communicator")
         GPIO.cleanup()
 
 
