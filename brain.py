@@ -14,7 +14,8 @@ def run():
         print("Activation request = ", activation_request)
         relay.activate(activation_request)
         count = count + 1
-#        time.sleep(1.0)
+        print("sleep")
+        time.sleep(1)
 
 
 if __name__ == '__main__':
