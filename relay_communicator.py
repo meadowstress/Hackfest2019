@@ -19,5 +19,8 @@ class RelayCommunicator:
             print("Turn off the relay!")
             # HIGH (deactive)
             GPIO.output(self.OUTPUT_PIN, GPIO.HIGH)
+
+    def __del__(self):
         GPIO.cleanup()
+
 
