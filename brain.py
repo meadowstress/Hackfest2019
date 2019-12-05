@@ -1,4 +1,4 @@
-from slack_alarm_bot import SlackAlarmBot
+#from slack_alarm_bot import SlackAlarmBot
 import relay_communicator
 import time
 import receiver

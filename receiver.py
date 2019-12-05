@@ -13,7 +13,7 @@ class Receiver:
         print("Delete Receiver")
         GPIO.cleanup()
 
-    def ceck_input_dummy(self):
+    def check_input_dummy(self):
         print("Check input, return true")
         return True
 
@@ -27,7 +27,4 @@ class Receiver:
         return activation_request
 
     def check_engage_switch(self):
-        if(GPIO.input(self.PIN_ENGAGED) == GPIO.LOW)
-        return True
-        else
-        return False
+        return(GPIO.input(self.PIN_ENGAGED) == GPIO.LOW)
