@@ -31,3 +31,6 @@ class SlackAlarmBot:
 
     def check_input_dummy(self):
         return self.alarm_on;
+
+if __name__ == "__main__":
+    alarm_bot = SlackAlarmBot()
