@@ -11,13 +11,12 @@ def cleanup():
 def run():
     print("Hi, I am the brain")
     count = 0
-    max_count = 10;
+    max_count = 10
     relay = relay_communicator.RelayCommunicator()
     while count < max_count:
         relay.activate_relay(receiver.check_input_dummy())
         count = count + 1
-
-    atexit.register(cleanup)
+        atexit.register(cleanup)
 
 
 if __name__ == '__main__':
