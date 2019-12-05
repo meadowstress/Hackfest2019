@@ -10,7 +10,7 @@ class RelayCommunicator:
         # Specify OUTPUT_PIN as output
         GPIO.setup(self.OUTPUT_PIN, GPIO.OUT)
 
-    def activate_relay(self, activate):
+    def activate(self, activate):
         if activate:
             print("Turn on the relay!")
             # LOW (active)
