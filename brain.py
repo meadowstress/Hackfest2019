@@ -1,4 +1,4 @@
-import receiver
+from slack_alarm_bot import SlackAlarmBot
 import relay_communicator
 import atexit
 import time
@@ -6,6 +6,10 @@ import time
 
 def run():
     print("Hi, I am the brain")
+
+    #commented out below as it is blocking. Need to run asynch.
+    #alarm_bot = SlackAlarmBot()
+
     count = 0
     max_count = 10
     relay = relay_communicator.RelayCommunicator()
