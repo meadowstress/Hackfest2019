@@ -3,13 +3,7 @@ import relay_communicator
 import time
 import receiver
 
-
-def run():
-    print("Hi, I am the brain")
-
-    # commented out below as it is blocking. Need to run asynch.
-    #alarm_bot = SlackAlarmBot()
-
+def do_work():
     count = 0
     max_count = 10
     relay = relay_communicator.RelayCommunicator()
@@ -22,6 +16,17 @@ def run():
         count = count + 1
         print("sleep")
         time.sleep(1)
+
+def run():
+    print("Hi, I am the brain")
+
+    alarm_bot = SlackAlarmBot()
+
+    loop = asyncio.get_event_loop()
+    loop.create_task(alarm_bot.rtm_client.start())
+    loop.create_task(do_work())
+    loop.run_forever()
+    loop.close()
 
 
 if __name__ == '__main__':
