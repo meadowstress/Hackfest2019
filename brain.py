@@ -1,9 +1,10 @@
-#from slack_alarm_bot import SlackAlarmBot
+from slack_alarm_bot import SlackAlarmBot
+import asyncio
 import relay_communicator
 import time
 import receiver
 
-def do_work():
+async def do_work():
     count = 0
     max_count = 10
     relay = relay_communicator.RelayCommunicator()
@@ -23,8 +24,9 @@ def run():
     alarm_bot = SlackAlarmBot()
 
     loop = asyncio.get_event_loop()
-    loop.create_task(alarm_bot.rtm_client.start())
     loop.create_task(do_work())
+    loop.create_task(alarm_bot.rtm_client.start())
+
     loop.run_forever()
     loop.close()
 

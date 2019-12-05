@@ -10,7 +10,7 @@ class SlackAlarmBot:
     alarm_on = False;
 
     def __init__(self):
-        slack_token = "xoxb-225841683220-853263508177-IvnW1mvwqISHAIvgxBokO35x"
+        slack_token = os.environ['SLACK_API_TOKEN']
         self.rtm_client = slack.RTMClient(token=slack_token, run_async=True)
         self.rtm_client.on(event='message', callback =  self.say_hello)
 
