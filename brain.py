@@ -1,11 +1,6 @@
 import receiver
 import relay_communicator
 import atexit
-import RPi.GPIO as GPIO
-
-
-def cleanup():
-    GPIO.cleanup()
 
 
 def run():
@@ -16,7 +11,6 @@ def run():
     while count < max_count:
         relay.activate(receiver.check_input_dummy())
         count = count + 1
-        atexit.register(cleanup)
 
 
 if __name__ == '__main__':
