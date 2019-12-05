@@ -11,6 +11,7 @@ class SlackAlarmBot:
 
     def __init__(self):
         slack_token = os.environ['SLACK_API_TOKEN']
+        print(slack_token)
         self.rtm_client = slack.RTMClient(token=slack_token, run_async=True)
         self.rtm_client.on(event='message', callback =  self.say_hello)
 
@@ -24,7 +25,7 @@ class SlackAlarmBot:
 
             web_client.chat_postMessage(
                 channel=channel_id,
-                text=f"Hi <@{user}>!",
+                text="Hi <@{}>!".format(user),
                 thread_ts=thread_ts
             )
         if 'Alarm' in data.get('text', []):
