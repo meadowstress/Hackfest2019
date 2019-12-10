@@ -6,17 +6,16 @@ import receiver
 
 
 async def do_work():
-    count = 0
-    max_count = 10
     relay = relay_communicator.RelayCommunicator()
-    while count < max_count:
-        activation_request = receiver.check_input_from_keyboard()
+    received_signal = receiver.Receiver()
+
+    while 1:
+        #activation_request = received_signal.check_input_from_keyboard()
+        activation_request = received_signal.check_engage_switch()
         print("Activation request = ", activation_request)
-        #activation_request = arbitrate(activation_requests)
         relay.activate(activation_request)
-        count = count + 1
         print("sleep")
-        await asyncio.sleep(1)
+        await asyncio.sleep(0.4)
 
 
 def run():
@@ -26,7 +25,7 @@ def run():
 
     loop = asyncio.get_event_loop()
     loop.create_task(do_work())
-    loop.create_task(alarm_bot.rtm_client.start())
+    # loop.create_task(alarm_bot.rtm_client.start())
 
     loop.run_forever()
     loop.close()
