@@ -18,7 +18,8 @@ import RPi.GPIO as GPIO
 class Receiver:
 
     def __init__(self):
-        self.system_engaged = False
+        self.pre_state_engaged = False
+        self.state_engaged = False
         self.PIN_ENGAGED = 40
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.PIN_ENGAGED, GPIO.IN)
@@ -41,4 +42,9 @@ class Receiver:
         return activation_request
 
     def check_engage_switch(self):
-        return(GPIO.input(self.PIN_ENGAGED) == GPIO.LOW)
+        if(GPIO.input(self.PIN_ENGAGED) == GPIO.LOW):
+            if not (self.state_engaged):
+                self.state_engaged = True
+            else:
+                self.state_engaged = False
+        return self.state_engaged
