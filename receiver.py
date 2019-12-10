@@ -18,11 +18,13 @@ import RPi.GPIO as GPIO
 class Receiver:
 
     def __init__(self):
-        self.pre_state_engaged = False
         self.state_engaged = False
         self.PIN_ENGAGED = 40
+        self.state_system = False
+        self.PIN_SYSTEM = 38
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.PIN_ENGAGED, GPIO.IN)
+        GPIO.setup(self.PIN_SYSTEM, GPIO.IN)
 
     def __del__(self):
         print("Delete Receiver")
@@ -42,9 +44,19 @@ class Receiver:
         return activation_request
 
     def check_engage_switch(self):
-        if(GPIO.input(self.PIN_ENGAGED) == GPIO.LOW):
-            if not (self.state_engaged):
-                self.state_engaged = True
-            else:
-                self.state_engaged = False
+        if(self.check_system_on()):
+            if((GPIO.input(self.PIN_ENGAGED) == GPIO.LOW)):
+                if not (self.state_engaged):
+                    self.state_engaged = True
+                else:
+                    self.state_engaged = False
+        else:
+            self.state_engaged = False
         return self.state_engaged
+
+    def check_system_on(self):
+        if(GPIO.input(self.PIN_SYSTEM) == GPIO.LOW):
+            self.state_system = True
+        else:
+            self.state_system = False
+        return self.state_system
