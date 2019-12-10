@@ -16,7 +16,7 @@ async def do_work():
         relay.activate(activation_request)
         count = count + 1
         print("sleep")
-        time.sleep(1)
+        await asyncio.sleep(1)
 
 
 def run():
