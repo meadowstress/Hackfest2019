@@ -9,6 +9,7 @@ class RelayCommunicator:
         GPIO.setmode(GPIO.BOARD)
         # Specify OUTPUT_PIN as output
         GPIO.setup(self.OUTPUT_PIN, GPIO.OUT)
+        GPIO.output(self.OUTPUT_PIN, GPIO.HIGH)  # init pin state
         self.last_state = False
 
     def activate(self, activate):
