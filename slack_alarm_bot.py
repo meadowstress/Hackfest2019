@@ -5,15 +5,16 @@ import time
 import asyncio
 from multiprocessing import Pool
 
+
 class SlackAlarmBot:
 
-    alarm_on = False;
+    alarm_on = False
 
     def __init__(self):
         slack_token = os.environ['SLACK_API_TOKEN']
         print(slack_token)
         self.rtm_client = slack.RTMClient(token=slack_token, run_async=True)
-        self.rtm_client.on(event='message', callback =  self.say_hello)
+        self.rtm_client.on(event='message', callback=self.say_hello)
 
     def say_hello(self, **payload):
         data = payload['data']
@@ -32,7 +33,9 @@ class SlackAlarmBot:
             self.alarm_on = True
 
     def check_input_dummy(self):
-        return self.alarm_on;
+        self.alarm_on = False
+        return self.alarm_on
+
 
 async def foo():
     while True:
@@ -47,5 +50,3 @@ if __name__ == "__main__":
     loop.create_task(foo())
     loop.run_forever()
     loop.close()
-
-
